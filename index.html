@@ -8,15 +8,8 @@
 <body>
   <div style="position: fixed; top: 5px; left: 0px; right: 0px; z-index: 10000000000; color: rgb(255, 0, 255); text-align: center; font-size: 24px; font-family: 'Comic Sans MS', 'Comic Sans', 'Marker Felt', serif; text-transform: uppercase;">
     <span>Key sequence detection works with 'utkarsh'</span>
-    <button id="clear-cache" style="margin: 4px; padding: 4px; float: right;">Clear Cache</button>
   </div>
   <script>
-    const clearButton = document.querySelector('#clear-cache');
-    clearButton.addEventListener('click', () => {
-      console.log('Clearing Cache');
-      cornify_count = 0;
-      cornify_setcookie('cornify', '0', 1000);
-    });
     const pressed = [];
     const secretCode = 'utkarsh';
     window.addEventListener('keyup', (e) => {
@@ -25,6 +18,10 @@
       if (pressed.join('').includes(secretCode)) {
         cornify_add();
       }
+    });
+    window.addEventListener('load', () => {
+      cornify_count = 0;
+      cornify_setcookie('cornify', cornify_count + '', 1000);
     });
   </script>
 </body>
